@@ -1,0 +1,108 @@
+.StartButton {
+  margin: 10px;
+  padding: 25px 25px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #1b5e20;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 5px #90a4ae;
+  text-transform: uppercase;
+}
+.StartButton:hover {
+  background-color: #388e3c;
+}
+.StartButton:active {
+  background-color: #00c853;
+  box-shadow: 0 1px #37474f;
+  transform: translate(1px);
+}
+.StopButton {
+  margin: 10px;
+  padding: 25px 25px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #b71c1c;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 5px #90a4ae;
+  text-transform: uppercase;
+}
+.StopButton:hover {
+  background-color: #d32f2f;
+}
+.StopButton:active {
+  background-color: #d50000;
+  box-shadow: 0 1px #37474f;
+  transform: translate(2px);
+}
+.ResetButton {
+  margin: 10px;
+  padding: 25px 25px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #1a237e;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 5px #90a4ae;
+  text-transform: uppercase;
+}
+.ResetButton:hover {
+  background-color: #303f9f;
+}
+.ResetButton:active {
+  background-color: #304ffe;
+  box-shadow: 0 1px #37474f;
+  transform: translate(2px);
+}
+@media only screen and (max-width: 600px) {
+  .StartButton {
+    font-size: 20px;
+    max-width: 250px;
+  }
+  .StopButton {
+    max-width: 250px;
+    font-size: 20px;
+  }
+  .ResetButton {
+    max-width: 250px;
+    font-size: 20px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .StartButton {
+    font-size: 30px;
+    max-width: 300px;
+  }
+  .StopButton {
+    max-width: 300px;
+    font-size: 30px;
+  }
+  .ResetButton {
+    max-width: 300px;
+    font-size: 30px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .StartButton {
+    max-width: 300px;
+    font-size: $mpb-font-big;
+  }
+  .StopButton {
+    max-width: $mpb-max-widthLarge;
+    font-size: $mpb-font-bigScreen;
+  }
+  .ResetButton {
+    max-width: $mpb-max-widthLarge;
+    font-size: $mpb-font-bigScreen;
+  }
+}
+.motorDisplay {
+  color: #00c853;
+}

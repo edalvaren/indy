@@ -10,21 +10,31 @@ import {sync} from 'vuex-router-sync';
 import './styles/stylus/main.styl';
 import Vuetify from 'vuetify';
 import VuetifyOptions from './plugins/vuetify-options';
-import io from 'socket.io-client';
+import {socketStore} from './http';
+import { ValidationProvider } from 'vee-validate';
+
 
 // Sync router to store, as `store.state.route`.
 sync(store, router);
 
 Vue.use(Vuetify, VuetifyOptions);
 Vue.use(http);
+Vue.use(require('vue-moment'));
+Vue.component('ValidationProvider', ValidationProvider);
+
+
 
 //Styles
 import './styles/stylus/main.styl';
 
 Vue.config.productionTip = false;
 
+
+
+
 new Vue({
   router,
   store,
+
   render: h => h(App)
 }).$mount('#app');

@@ -3,7 +3,7 @@
         app-system-bar
         app-toolbar
         v-content
-            v-container.fluid
+            v-container(xs="12" md="4")
                 router-view
         app-side-bar
         app-footer

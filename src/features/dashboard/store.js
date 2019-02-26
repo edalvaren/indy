@@ -1,5 +1,5 @@
-import store from 'src/store';
-
+import store from '../../store';
+import io from 'socket.io-client';
 
 store.registerModule('dashboard', {
     namespaced: true,
@@ -7,7 +7,8 @@ store.registerModule('dashboard', {
     //State loaded when this component is first loaded
     state: {
         SpiralName: '',
-        SessionDuration: 0
+        SessionDuration: 0,
+        // socket: io(process.env.SOCKET_URL)
     },
     mutations: {
         updateSpiralName(state, newVal) {
@@ -16,11 +17,13 @@ store.registerModule('dashboard', {
     },
     actions: {
         updateSpiralName({state, commit, rootState, dispatch}, newVal){
-            console.log(newVal)
+            console.log(newVal);
             commit('updateSpiralName', newVal)
         }
     },
     getters: {
-
+        SpiralName: state => state.SpiralName
     }
 });
+
+export default store;

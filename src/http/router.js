@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './routes'
-import store from 'src/store'
+
+
+
+Vue.use(Router);
 
 const router = new Router({
-    base: '/',
-
     routes: routes.map(route => ({
         name: route.name,
         path: route.path,

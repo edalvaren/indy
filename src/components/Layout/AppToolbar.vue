@@ -5,27 +5,29 @@
                             <v-icon @click.stop="drawerChanged" dark>menu</v-icon>
                         </v-toolbar-title>
 
-                    <v-list>
-                        <v-list-tile
-                                v-for="item in menuItems"
-                                :key="item"
-                        >
-                            <v-list-tile-title v-text="item"></v-list-tile-title>
-                        </v-list-tile>
-                    </v-list>
                 </v-menu>
-                <v-toolbar-title> CONDITIONING CONTROL CENTER </v-toolbar-title>
-                <v-spacer></v-spacer>
+                <v-toolbar-title>
+                    <span class="full-text"> CONDITIONING CONTROL CENTER  </span>
+                    <span class="short-text"> CCC  </span>
+                </v-toolbar-title>
+
                 <v-btn icon>
-                    <v-icon>refresh</v-icon>
+                    <v-icon @click="reloadPage">refresh</v-icon>
                 </v-btn>
+                <v-spacer></v-spacer>
+                <v-toolbar-side-icon> <v-img class="toolbar-logo" v-bind:src="this.iloxLogo" min-height="50px" min-width="150">  </v-img></v-toolbar-side-icon>
+
+
             </v-toolbar>
+
     </template>
 
 <script>
+    import Ilox from "../../assets/ilox.png"
     export default {
         name: "AppToolbar",
         data: () => ({
+            iloxLogo: Ilox,
             menuItems: [
                 'Home', 'Connection', 'About',
             ]
@@ -33,11 +35,30 @@
         methods: {
             drawerChanged: function() {
                 this.$store.commit('change', this.$store.state)
+            },
+            reloadPage: function () {
+                window.location.reload()
             }
         }
     }
 </script>
 
-<style scoped>
 
+<style scoped>
+    .toolbar-logo {
+        width: 100%;
+        justify-self: center;
+        margin-right: 100px;
+    }
+    .short-text { display: none; }
+
+    @media (max-width: 750px) {
+        .short-text {
+            display: inline-block;
+        }
+
+        .full-text {
+            display: none;
+        }
+    }
 </style>

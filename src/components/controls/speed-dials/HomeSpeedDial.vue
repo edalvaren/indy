@@ -1,7 +1,7 @@
 <template lang="pug">
         v-layout(fluid="" grid-list-md="")
             v-speed-dial(v-model="fab" :top="top" :bottom="bottom" :right="right" :left="left" :direction="direction" :open-on-hover="hover" :transition="transition")
-                v-btn(slot="activator" v-model="fab" color="blue darken-2" dark="" fab="")
+                v-btn(slot="activator" v-model="fab" color="accent" dark="" fab="")
                     v-icon build
                     v-icon close
                 v-btn(fab="" dark="" large="" color="green")
@@ -15,8 +15,7 @@
 </template>
 
 <script>
-    import MainButton from './controls/MainButton'
-
+    import motorIcon from '../../../assets/mardi.svg';
     export default {
         computed: {
             activeFab() {
@@ -33,7 +32,6 @@
             }
         },
         name: "HomeSpeedDial",
-        components: MainButton,
         data: () => ({
             direction: 'right',
             fab: false,
@@ -46,6 +44,7 @@
             left: false,
             transition: 'slide-y-reverse-transition'
         }),
+        motorIcon: motorIcon,
         watch: {
             top(val) {
                 this.bottom = !val

@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import socketStore from './socketStore'
-
+import socket from '../http/socket'
+import createWebSocketPlugin from '../plugins/webSocketPlugin';
 
 Vue.use(Vuex);
 
 
-const moduleA = {
+const appComponentStore = {
   state: {
     drawer: null,
     message: '',
@@ -30,9 +30,9 @@ const moduleA = {
   ,
 };
 
-const moduleB = {
+const TimingFuncStore = {
   state: {
-    now: new Date
+    now: new Date()
   },
   mutations: {
     updateTime (state) {
@@ -49,27 +49,13 @@ const moduleB = {
   getters: {},
 };
 
-const alarmStore = {
-  state: {
-    alarms: []
-  },
-  mutations: {
 
-  },
-  actions: {
 
-  },
-  getters: {
-
-  },
-};
-
+const plugin = createWebSocketPlugin;
 
 export default new Vuex.Store({
   modules: {
-    a: moduleA,
-    b: moduleB,
-    alarmStore: alarmStore,
-    socketStore: socketStore
-  }
+    a: appComponentStore,
+    b: TimingFuncStore,
+  },
 });

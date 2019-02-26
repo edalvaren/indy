@@ -1,0 +1,144 @@
+// Start Button Colors
+$startButtonColor = #1B5E20
+$startButtonHover = #388E3C
+$startButtonActive = #00C853
+
+// Stop Button Colors
+$stopButtonColor = #B71C1C
+$stopButtonHover = #D32F2F
+$stopButtonActive = #D50000
+
+// Reset Button Colors
+$resetButtonColor = #1A237E
+$resetButtonHover = #303F9F
+$resetButtonActive = #304FFE
+
+
+// Box Shadow Properties
+$box-shadow-size = 5px
+$box-shadow-transform-size = 1px
+$box-shadow-color = #90A4AE
+$box-shadow-active = #37474F
+
+// General Properties
+$mpb-padding = 25px 25px
+$mpb-font-size = 38px
+$mpb-width = 150px
+$mpb-border-radius = 20px
+$mpb-margin = 10px
+
+$mpb-font-small = 20px
+$mpb-font-md = 30px
+$mpb-font-large = 45px
+
+$mpb-max-width-small = 250px
+$mpb-max-width-md = 300px
+$mpb-max-width-large = 300px
+
+
+
+
+.StartButton
+    margin $mpb-margin
+    padding: $mpb-padding
+    text-align: center
+    cursor: pointer
+    outline: none
+    color: #ffffff
+    background-color: $startButtonColor
+    border: none
+    border-radius: $mpb-border-radius
+    box-shadow: 0 $box-shadow-size $box-shadow-color
+    text-transform: uppercase
+    &:hover
+      background-color: $startButtonHover
+    &:active
+      background-color $startButtonActive
+      box-shadow 0 $box-shadow-transform-size #37474F
+      transform translate(1px)
+
+
+  .StopButton
+    margin $mpb-margin
+    padding: $mpb-padding
+    text-align: center
+    cursor: pointer
+    outline: none
+    color: #ffffff
+    background-color: $stopButtonColor
+    border: none
+    border-radius: $mpb-border-radius
+    box-shadow: 0 $box-shadow-size $box-shadow-color
+    text-transform: uppercase
+    &:hover
+      background-color: $stopButtonHover
+    &:active
+      background-color $stopButtonActive
+      box-shadow 0 $box-shadow-transform-size $box-shadow-active
+      transform translate(2px)
+
+
+
+  .ResetButton
+    margin: $mpb-margin
+    padding: $mpb-padding
+    text-align: center
+    cursor: pointer
+    outline: none
+    color: #fffFFF
+    background-color: $resetButtonColor
+    border: none
+    border-radius: $mpb-border-radius
+    box-shadow: 0 $box-shadow-size $box-shadow-color
+    text-transform: uppercase
+    &:hover
+      background-color: $resetButtonHover
+    &:active
+      background-color $resetButtonActive
+      box-shadow 0 $box-shadow-transform-size $box-shadow-active
+      transform translate(2px)
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px)
+  .StartButton
+    font-size $mpb-font-small
+    max-width $mpb-max-width-small
+  .StopButton
+    max-width $mpb-max-width-small
+    font-size $mpb-font-small
+  .ResetButton
+    max-width $mpb-max-width-small
+    font-size $mpb-font-small
+
+
+
+
+///* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px)
+  .StartButton
+    font-size $mpb-font-md
+    max-width $mpb-max-width-md
+  .StopButton
+    max-width $mpb-max-width-md
+    font-size $mpb-font-md
+  .ResetButton
+    max-width $mpb-max-width-md
+    font-size $mpb-font-md
+
+
+
+///* Medium devices (landscape tablets, 768px and up) */
+//@media only screen and (min-width: 768px)
+//
+
+@media only screen and (min-width: 992px)
+  .StartButton
+    max-width $mpb-max-width-large
+    font-size $mpb-font-big
+  .StopButton
+    max-width $mpb-max-widthLarge
+    font-size $mpb-font-bigScreen
+  .ResetButton
+    max-width $mpb-max-widthLarge
+    font-size $mpb-font-bigScreen

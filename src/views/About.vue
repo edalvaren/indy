@@ -100,3 +100,12 @@
 <style>
 
 </style>
+
+
+/**
+v-container(grid-list-md="")
+v-layout.wrap
+v-flex(xs6 sm5 md4 )
+v-card
+v-card-title {{ tags }}
+**/

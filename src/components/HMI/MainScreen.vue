@@ -2,22 +2,12 @@
     v-container
         v-layout
             v-flex
-                v-form
-                    v-text-field(v-bind:value="testValue" type="input" outline label="test value")
-                    v-btn(@click.prevent="sendTestValue" type="submit") Submit
-            v-flex
-                main-button
-                v-divider
-        v-layout
-            v-flex
-                home-speed-dial
+
 </template>
 <script>
-    import {mapState, mapActions, mapGetters} from 'vuex'
-    import MainButton from './controls/MainButton'
-    import StatusIndicator from './controls/StatusIndicator'
-    import HomeSpeedDial from './HomeSpeedDial'
-    import store from '../../store'
+    import { mapActions, mapGetters} from 'vuex'
+    import MainButton from '../controls/MainButton'
+    import StatusIndicator from '../controls/status-indicators/StatusIndicator'
 
 
     export default {
@@ -43,13 +33,12 @@
             }),
         },
         components: {
-            MainButton, StatusIndicator, HomeSpeedDial
+            MainButton, StatusIndicator
         },
         methods: {
-            sendTestValue(e){
-                e.preventDefault();
-            },
-
+            ...mapActions({
+              sayHello: 'socketStore/sayHello'
+            })
         }
     }
 </script>

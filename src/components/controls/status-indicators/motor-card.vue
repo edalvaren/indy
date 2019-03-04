@@ -11,7 +11,6 @@
         v-divider.light
         v-card-actions(class="pa-3")
             v-spacer
-            v-icon pan_tool
 
 
 

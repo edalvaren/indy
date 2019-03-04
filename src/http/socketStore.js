@@ -76,6 +76,8 @@ store.registerModule('socketStore', {
         DrumCurrent: state => state.tagVal[3],
         TakeUpSpeed: state => state.tagVal[12],
         TakeUpCurrent: state => state.tagVal[13],
+        FreqSp: state => state.tagVal[19],
+        TorqueSp: state => state.tagVal[6],
         activeAlarms: state => state.ActiveAlarms,
 
     },

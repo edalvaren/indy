@@ -1,6 +1,4 @@
 
-import HomeSpeedDial from 'HomeSpeedDial';
+import speedDial from './HomeSpeedDial.vue';
 
-module.exports = {
-    HomeSpeedDial
-};
+export const HomeDial = speedDial;

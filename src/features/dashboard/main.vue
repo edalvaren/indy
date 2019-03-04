@@ -1,15 +1,15 @@
 <template lang="pug">
-    v-container(fluid="" grid-list-xl="")
+    v-container(fluid="" grid-list-xs="")
         v-layout.row.wrap(class="MainButtons" justify-center)
-            v-flex.d-flex(xs12 md4 sm3)
+            v-flex.d-flex(xs12 md4 sm12)
                 start-button( :onClick="startButtonClicked") Start
-            v-flex.d-flex(xs12 md4 sm3)
+            v-flex.d-flex(xs12 md4 sm12)
                 stop-button( :onClick="stopButtonClicked") Stop
-            v-flex.d-flex(xs12 md4 sm3)
+            v-flex.d-flex(xs12 md4 sm12)
                 reset-button( :onClick="resetButtonClicked") Reset
-
+        div.row
         v-divider
-        v-layout.row.wrap
+        v-layout.row.wrap(class="dashboard-sheet")
             v-flex.d-flex(xs12 sm12 md12)
                v-layout.row
                     v-flex.d-flex(v-for="data in speedTags" :key="speedTags.id" sm6 md6 xs6)
@@ -17,6 +17,12 @@
                             motor-card( :CardTitle="data.cardTitle" :SpeedValue="tagVal[2].value" :Unit="data.SpeedUnit"  :CurrentValue="tagVal[3].value" :CardImage="data.Image")
                        div(v-else-if="data.id === 1")
                             motor-card( :CardTitle="data.cardTitle" :SpeedValue="tagVal[12].value" :Unit="data.SpeedUnit"  :CurrentValue="tagVal[13].value" :CardImage="data.Image")
+        v-layout.row.wrap
+            v-flex.d-flex(v-for="sp in setpoints" :key="setpoints.id" xs12 md6)
+                div(v-if="sp.id === 0")
+                    SetpointSlider(:sliderVal="FreqSp.value" :unit="sp.unit", :sliderLabel="sp.label" :minVal="sp.min" :maxVal="sp.max")
+                div(v-if="sp.id === 1")
+                    SetpointSlider(:sliderVal="TorqueSp.value" :unit="sp.unit" :sliderLabel="sp.label" :minVal="sp.min" :maxVal="sp.max")
 
 
 
@@ -28,6 +34,8 @@
 //import components
 import { StartButton, StopButton, ResetButton} from 'controls/momentary-push-button';
 import {MotorCard} from "controls/status-indicators";
+import  {HomeDial} from '@/components/controls/speed-dials';
+import {SetpointSlider} from '@/components/controls/user-input';
 
 // Mapping store data to page data
 import {mapState, mapGetters} from 'vuex';
@@ -52,7 +60,9 @@ export default {
             DrumSpeed: 'socketStore/DrumSpeed',
             DrumCurrent: 'socketStore/DrumCurrent',
             TakeUpSpeed: 'socketStore/TakeUpSpeed',
-            TakeUpCurrent: 'socketStore/TakeUpCurrent'
+            TakeUpCurrent: 'socketStore/TakeUpCurrent',
+            FreqSp: 'socketStore/FreqSp',
+            TorqueSp: 'socketStore/TorqueSp'
         }),
     },
     mounted(){
@@ -65,6 +75,8 @@ export default {
         StopButton,
         ResetButton,
         MotorCard,
+        HomeDial,
+        SetpointSlider
     },
     data: () => ({
         speedTags: [
@@ -74,7 +86,14 @@ export default {
         torqueTags:
             {id: 0, cardTitle: "Drum", SpeedUnit: " Hz", SpeedValue: '20', CurrentValue: '5.71',  Image: LoadCell},
 
-        speedModes: ['Auto', 'Manual', 'Test']
+        speedModes: ['Auto', 'Manual', 'Test'],
+
+        setpoints: [
+           {id: 0, unit: "Hz", label: "Speed", min: 0, max: 60},
+           {id: 1, unit: "%", label: "Torque SP", min: 0, max: 100}
+        ],
+        hzUnit: "Hz",
+        torqueUnit: "%"
 
     }),
     methods: {
@@ -108,14 +127,16 @@ export default {
 
     .MainButtons
         background-color #E8EAF6
-        margin-top: 16px
+        margin-top 16px
         border: inset 8px 'accent'
         justify-content center
         align-content center
         align-items center
 
     .dashboard-sheet
-        background-color #E0E0E0
+        background-color #E8EAF6
+        margin-top 70px
+        padding-top 2em
 
     @media only screen and (max-width: 600px)
         .dashboard-sheet

@@ -1,11 +1,11 @@
 <template lang="pug">
     v-data-table.elevation-1( :headers="headers" :items="ActiveAlarms" item-key="TimeStamp" select-all="")
         template(slot="items" slot-scope="props")
-            td.text-md-left {{ props.item.AlarmName }}
+            td.text-xs-left {{ props.item.AlarmName }}
             td.text-xs-left {{ props.item.AlarmNumber  }}
-            td.text-xs-left {{ props.item.TimeStamp | moment("dddd, MMMM Do YYYY, h:mm:ss a") }}
+            td.text-xs-left {{ props.item.TimeStamp | moment(" MM DD YY, h:mm:ss a") }}
         template(slot="no-data")
-            v-alert(:value="true" color="error" icon="warning") No Active alarms
+            v-alert(:value="true" color="success" icon="warning") No Active alarms
         template(slot="footer")
             td(:colspan="headers.length")
                 v-btn(block color="#283593" dark @click="clearAlarms")  Clear Alarms
@@ -23,7 +23,6 @@
         mounted(){
             this.Socket.emit('READ_ALARMS');
             this.Socket.on('ALARM', (data) => {
-
                 this.$store.dispatch('socketStore/updateAlarms', data);
             });
         },
@@ -40,13 +39,12 @@
                 selected: [],
                 headers: [
                     {
-                        text: 'Alarm Name',
+                        text: 'Alarm Number',
                         align: 'left',
                         sortable: true,
-                        value: 'name'
+                        value: 'AlarmName'
                     },
-                    { text: 'Alarm Number', value: 'calories' },
-                    { text: 'Time Stamp', value: 'fat' },
+                    { text: 'Time Stamp', value: 'calories' },
                 ],
             }),
         methods: {

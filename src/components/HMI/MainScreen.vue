@@ -6,7 +6,6 @@
 </template>
 <script>
     import { mapActions, mapGetters} from 'vuex'
-    import MainButton from '../controls/MainButton'
     import StatusIndicator from '../controls/status-indicators/StatusIndicator'
 
 
@@ -33,7 +32,7 @@
             }),
         },
         components: {
-            MainButton, StatusIndicator
+            StatusIndicator
         },
         methods: {
             ...mapActions({

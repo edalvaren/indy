@@ -34,7 +34,7 @@ store.registerModule('socketStore', {
             state.pickedTag = _.filter(newVal, x => x.name === "Spiral_Drum.VFD_Feedback_Frequency")
         },
         addAlarm(state, alarm) {
-            state.ActiveAlarms.push(alarm);
+                state.ActiveAlarms.push(alarm);
         }
 
     },
@@ -52,15 +52,20 @@ store.registerModule('socketStore', {
             // commit('updateTagVal', _.filter(newVal, x => x[0].name === "Spiral_Drum.VFD_Feedback_Frequency"));
         },
         updateAlarms({state, commit, rootState, dispatch}, newVal){
-                commit('addAlarm', newVal);
+            let lengthIsZero = (Object.keys(newVal).length === 0);
+            let constructorIsObject = (newVal.constructor === Object);
+            if (lengthIsZero && constructorIsObject || isEmpty(newVal)) {
+                console.log('empty object')
+            } else {
+                    commit('addAlarm', newVal)
 
-            // commit('updateTagVal', .name);
+            }
+
         },
     },
     getters: {
         Socket: state => state.Socket,
         ConnectionId: state => state.Socket.id,
-
         Connected: state => {
             return state.ConnectionId.length <= 0;
 
@@ -72,7 +77,43 @@ store.registerModule('socketStore', {
         TakeUpSpeed: state => state.tagVal[12],
         TakeUpCurrent: state => state.tagVal[13],
         activeAlarms: state => state.ActiveAlarms,
+
     },
 });
+
+function checkDuplicateInObject(propertyName, inputArray) {
+    let seenDuplicate = false,
+        testObject = {};
+
+    inputArray.map(function(item) {
+        let itemPropertyName = item[propertyName];
+        if (itemPropertyName in testObject) {
+            testObject[itemPropertyName].duplicate = true;
+            item.duplicate = true;
+            seenDuplicate = true;
+        }
+        else {
+            testObject[itemPropertyName] = item;
+            delete item.duplicate;
+        }
+    });
+
+    return seenDuplicate;
+}
+
+
+/**
+ * Checks an Object to see if it's empty or = to {}
+ * @param obj Object to check for empty condition
+ * @returns {boolean}
+ */
+function isEmpty(obj){
+    for (var key in obj){
+        if (obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+
 
 export default store;

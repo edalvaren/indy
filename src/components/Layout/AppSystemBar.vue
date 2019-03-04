@@ -14,10 +14,10 @@
     export default {
         name: 'AppSystemBar',
         computed: mapState({
-           now: state => state.b.now
+           now: state => state.timeStore.now
         }),
         created() {
-            setInterval(() => this.$store.state.b.now = new Date, 1000 * 60)
+            setInterval(() => this.$store.state.timeStore.now = new Date, 1000 * 60)
         }
     }
 

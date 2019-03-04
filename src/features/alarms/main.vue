@@ -1,10 +1,14 @@
 <template lang="pug">
-    v-data-table.elevation-1(v-model=selected :headers="headers" :items="ActiveAlarms" item-key="AlarmName" select-all="")
+    v-data-table.elevation-1( :headers="headers" :items="ActiveAlarms" item-key="TimeStamp" select-all="")
         template(slot="items" slot-scope="props")
-            td {{ props.item.AlarmName }}
+            td.text-md-left {{ props.item.AlarmName }}
             td.text-xs-left {{ props.item.AlarmNumber  }}
-            td.text-xs-left {{ props.item.timestamp }}
-
+            td.text-xs-left {{ props.item.TimeStamp | moment("dddd, MMMM Do YYYY, h:mm:ss a") }}
+        template(slot="no-data")
+            v-alert(:value="true" color="error" icon="warning") No Active alarms
+        template(slot="footer")
+            td(:colspan="headers.length")
+                v-btn(block color="#283593" dark @click="clearAlarms")  Clear Alarms
 
 </template>
 
@@ -19,6 +23,7 @@
         mounted(){
             this.Socket.emit('READ_ALARMS');
             this.Socket.on('ALARM', (data) => {
+
                 this.$store.dispatch('socketStore/updateAlarms', data);
             });
         },
@@ -33,7 +38,6 @@
         },
         data: () => ({
                 selected: [],
-                Alarm: this.ActiveAlarms[2],
                 headers: [
                     {
                         text: 'Alarm Name',
@@ -44,19 +48,12 @@
                     { text: 'Alarm Number', value: 'calories' },
                     { text: 'Time Stamp', value: 'fat' },
                 ],
-                testData: [
-                    {
-                        name: 'Take-up Fault',
-                        number: "702",
-                        timestamp:"03/01/19 13:05:41",
-                    },
-                    {
-                        name: 'Drum VFD Fault',
-                        number: 237,
-                        timestamp: "02/27/19 09:55:13",
-                     },
-                ]
-            })
+            }),
+        methods: {
+            clearAlarms(e){
+                this.Socket.emit('CLEAR_ALARMS');
+            }
+        }
         }
 
 </script>

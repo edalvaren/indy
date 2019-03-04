@@ -1,13 +1,13 @@
 .StartButton {
-  margin: 10px;
-  padding: 25px 25px;
+  margin: 16px;
+  padding: 24px 24px;
   text-align: center;
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: #1b5e20;
+  background-color: #024c15;
   border: none;
-  border-radius: 20px;
+  border-radius: 24px;
   box-shadow: 0 5px #90a4ae;
   text-transform: uppercase;
 }
@@ -20,15 +20,15 @@
   transform: translate(1px);
 }
 .StopButton {
-  margin: 10px;
-  padding: 25px 25px;
+  margin: 16px;
+  padding: 24px 24px;
   text-align: center;
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: #b71c1c;
+  background-color: #7f0005;
   border: none;
-  border-radius: 20px;
+  border-radius: 24px;
   box-shadow: 0 5px #90a4ae;
   text-transform: uppercase;
 }
@@ -38,18 +38,18 @@
 .StopButton:active {
   background-color: #d50000;
   box-shadow: 0 1px #37474f;
-  transform: translate(2px);
+  transform: translate(1px);
 }
 .ResetButton {
-  margin: 10px;
-  padding: 25px 25px;
+  margin: 16px;
+  padding: 24px 24px;
   text-align: center;
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: #1a237e;
+  background-color: #311b92;
   border: none;
-  border-radius: 20px;
+  border-radius: 24px;
   box-shadow: 0 5px #90a4ae;
   text-transform: uppercase;
 }
@@ -59,34 +59,34 @@
 .ResetButton:active {
   background-color: #304ffe;
   box-shadow: 0 1px #37474f;
-  transform: translate(2px);
+  transform: translate(1px);
 }
 @media only screen and (max-width: 600px) {
   .StartButton {
-    font-size: 20px;
+    font-size: 22px;
     max-width: 250px;
   }
   .StopButton {
     max-width: 250px;
-    font-size: 20px;
+    font-size: 22px;
   }
   .ResetButton {
     max-width: 250px;
-    font-size: 20px;
+    font-size: 22px;
   }
 }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 786px) {
   .StartButton {
-    font-size: 30px;
+    font-size: 32px;
     max-width: 300px;
   }
   .StopButton {
     max-width: 300px;
-    font-size: 30px;
+    font-size: 32px;
   }
   .ResetButton {
     max-width: 300px;
-    font-size: 30px;
+    font-size: 32px;
   }
 }
 @media only screen and (min-width: 992px) {

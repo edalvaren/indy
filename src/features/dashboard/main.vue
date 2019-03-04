@@ -1,15 +1,13 @@
 <template lang="pug">
-    v-container(fluid="" grid-list-xs="")
-        v-layout.row.wrap(class="MainButtons")
-            v-flex.d-flex(xs12 sm12 md12)
-                v-layout.row(wrap)
-                    v-flex.d-flex(xs12="" sm4 md3)
-                        start-button( :onClick="startButtonClicked") Start
-                    v-flex.d-flex(xs12="" md3 sm4)
-                        stop-button( :onClick="stopButtonClicked") Stop
-                    v-flex.d-flex(xs12="" md3 sm4)
-                        reset-button( :onClick="resetButtonClicked") Reset
-        v-layout.row.wrap
+    v-container(fluid="" grid-list-xl="")
+        v-layout.row.wrap(class="MainButtons" justify-center)
+            v-flex.d-flex(xs12 md4 sm3)
+                start-button( :onClick="startButtonClicked") Start
+            v-flex.d-flex(xs12 md4 sm3)
+                stop-button( :onClick="stopButtonClicked") Stop
+            v-flex.d-flex(xs12 md4 sm3)
+                reset-button( :onClick="resetButtonClicked") Reset
+
         v-divider
         v-layout.row.wrap
             v-flex.d-flex(xs12 sm12 md12)
@@ -19,16 +17,25 @@
                             motor-card( :CardTitle="data.cardTitle" :SpeedValue="tagVal[2].value" :Unit="data.SpeedUnit"  :CurrentValue="tagVal[3].value" :CardImage="data.Image")
                        div(v-else-if="data.id === 1")
                             motor-card( :CardTitle="data.cardTitle" :SpeedValue="tagVal[12].value" :Unit="data.SpeedUnit"  :CurrentValue="tagVal[13].value" :CardImage="data.Image")
-                    <!--v-flex.d-flex-->
-                        <!--torque-card( :CardTitle="torqueTags.cardTitle" :LoadCellValue="tagVal[17].value" :TorqueValue="tagVal[4].value" :CardImage="torqueTags.Image")-->
+
+
+
 
 </template>
 
 <script>
+
+//import components
 import { StartButton, StopButton, ResetButton} from 'controls/momentary-push-button';
-import {MotorCard, TorqueCard} from "controls/status-indicators";
+import {MotorCard} from "controls/status-indicators";
+
+// Mapping store data to page data
 import {mapState, mapGetters} from 'vuex';
+
+// Needed for the store to work
 import store from '@/store'; // eslint-disable-line no-unused-vars
+
+// Images for Cards
 import MoviDrive from '@/assets/movidrive.png';
 import PowerFlex from '@/assets/powerflex.png';
 import LoadCell from '@/assets/loadcell.png';
@@ -58,7 +65,6 @@ export default {
         StopButton,
         ResetButton,
         MotorCard,
-        TorqueCard
     },
     data: () => ({
         speedTags: [
@@ -67,6 +73,8 @@ export default {
         ],
         torqueTags:
             {id: 0, cardTitle: "Drum", SpeedUnit: " Hz", SpeedValue: '20', CurrentValue: '5.71',  Image: LoadCell},
+
+        speedModes: ['Auto', 'Manual', 'Test']
 
     }),
     methods: {
@@ -99,12 +107,27 @@ export default {
 <style scoped lang="stylus">
 
     .MainButtons
-        background-color #37474f
-        margin-top: 10px
-        margin-bottom 25px
-        border: inset 4px 'accent'
-        justify-content space-between
+        background-color #E8EAF6
+        margin-top: 16px
+        border: inset 8px 'accent'
+        justify-content center
         align-content center
         align-items center
 
+    .dashboard-sheet
+        background-color #E0E0E0
+
+    @media only screen and (max-width: 600px)
+        .dashboard-sheet
+            height 256px
+            font-size 14px
+
+    @media only screen and (min-width: 786px)
+        .dashboard-sheet
+            height 343
+            font-size 16px
+    @media only screen and (min-width: 992px)
+        .dashboard-sheet
+            height 483
+            font-size 28px
 </style>

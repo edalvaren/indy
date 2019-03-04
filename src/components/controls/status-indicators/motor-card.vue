@@ -1,5 +1,5 @@
 <template lang="pug">
-    v-card(class="motor-display" color="#37474f"  ripple="" dark hover="" flat="" tile="")
+    v-card(class="motor-display" color="#E8EAF6"  ripple="" hover="" flat="" tile="")
         v-layout
             v-flex(xs5)
                 v-img( :src="CardImage" height="175px" contain)
@@ -9,13 +9,10 @@
                     div {{SpeedValue + Unit }}
                     div {{ CurrentValue | currency | current }}
         v-divider.light
-        v-card-actions(class="pa-3")  Status
+        v-card-actions(class="pa-3")
             v-spacer
-            v-icon settings
-            v-divider.light(vertical)
             v-icon pan_tool
-            v-divider.light(vertical)
-            v-icon done
+
 
 
 </template>
@@ -85,12 +82,12 @@
 
     @media only screen and (max-width: 600px)
         .motor-display
-            font-size 14px
+            font-size 18px
     @media only screen and (min-width: 600px)
         .motor-display
-            font-size 16px
+            font-size 26px
     @media only screen and (min-width: 600px)
         .motor-display
-            font-size 28px
+            font-size 32px
 
 </style>

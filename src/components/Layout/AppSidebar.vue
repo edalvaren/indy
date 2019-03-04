@@ -27,7 +27,7 @@
     const ilox = require('@/assets/ilox.png');
     export default {
         computed: mapState({
-           drawer: state => state.a.drawer,
+           drawer: state => state.effectStore.drawer,
             }),
         data () {
             return {

@@ -1,15 +1,15 @@
 // Start Button Colors
-$startButtonColor = #1B5E20
+$startButtonColor = #024C15
 $startButtonHover = #388E3C
 $startButtonActive = #00C853
 
 // Stop Button Colors
-$stopButtonColor = #B71C1C
+$stopButtonColor = #7F0005
 $stopButtonHover = #D32F2F
 $stopButtonActive = #D50000
 
 // Reset Button Colors
-$resetButtonColor = #1A237E
+$resetButtonColor = #311B92
 $resetButtonHover = #303F9F
 $resetButtonActive = #304FFE
 
@@ -21,14 +21,14 @@ $box-shadow-color = #90A4AE
 $box-shadow-active = #37474F
 
 // General Properties
-$mpb-padding = 25px 25px
-$mpb-font-size = 38px
-$mpb-width = 150px
-$mpb-border-radius = 20px
-$mpb-margin = 10px
+$mpb-padding = 24px 24px
+$mpb-font-size = 40px
+$mpb-width = 240px
+$mpb-border-radius = 24px
+$mpb-margin = 16px
 
-$mpb-font-small = 20px
-$mpb-font-md = 30px
+$mpb-font-small = 22px
+$mpb-font-md = 32px
 $mpb-font-large = 45px
 
 $mpb-max-width-small = 250px
@@ -75,7 +75,7 @@ $mpb-max-width-large = 300px
     &:active
       background-color $stopButtonActive
       box-shadow 0 $box-shadow-transform-size $box-shadow-active
-      transform translate(2px)
+      transform translate(1px)
 
 
 
@@ -96,7 +96,7 @@ $mpb-max-width-large = 300px
     &:active
       background-color $resetButtonActive
       box-shadow 0 $box-shadow-transform-size $box-shadow-active
-      transform translate(2px)
+      transform translate(1px)
 
 
 /* Extra small devices (phones, 600px and down) */
@@ -115,7 +115,7 @@ $mpb-max-width-large = 300px
 
 
 ///* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px)
+@media only screen and (min-width: 786px)
   .StartButton
     font-size $mpb-font-md
     max-width $mpb-max-width-md

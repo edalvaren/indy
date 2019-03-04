@@ -12,7 +12,7 @@
                 </v-toolbar-title>
 
                 <v-btn icon>
-                    <v-icon @click="reloadPage">refresh</v-icon>
+                    <v-icon color="danger" @click="reloadPage">refresh</v-icon>
                 </v-btn>
                 <v-spacer></v-spacer>
                 <v-toolbar-side-icon> <v-img class="toolbar-logo" v-bind:src="this.iloxLogo" min-height="50px" min-width="150">  </v-img></v-toolbar-side-icon>
@@ -44,9 +44,10 @@
 </script>
 
 
-<style scoped>
+<style scoped lang="stylus">
     .toolbar-logo {
         width: 100%;
+        color: 'secondary';
         justify-self: center;
         margin-right: 100px;
     }

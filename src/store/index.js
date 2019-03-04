@@ -1,10 +1,9 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import socket from '../http/socket'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import socket from '../http/socket';
 import createWebSocketPlugin from '../plugins/webSocketPlugin';
-
 Vue.use(Vuex);
-
+Vue.config.devtools = true;
 
 const appComponentStore = {
   state: {
@@ -50,12 +49,18 @@ const TimingFuncStore = {
 };
 
 
+// const vuexLocal = new VuexPersist({
+//   key: 'my-app',
+//   storage: localStorage
+// })
+
 
 const plugin = createWebSocketPlugin;
 
 export default new Vuex.Store({
   modules: {
-    a: appComponentStore,
-    b: TimingFuncStore,
+    effectStore: appComponentStore,
+    timeStore: TimingFuncStore,
   },
+  // plugins: [vuexLocal.plugin]
 });

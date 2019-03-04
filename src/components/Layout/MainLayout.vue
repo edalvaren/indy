@@ -3,7 +3,7 @@
         app-system-bar
         app-toolbar
         v-content
-            v-container(xs="12" md="4")
+            v-container(xs12 md12)
                 router-view
         app-side-bar
         app-footer
@@ -18,12 +18,28 @@ import AppFooter from './AppFooter';
 export default {
     name: 'MainLayout',
     components: {
-        AppFooter, AppSideBar, AppToolbar,
-        AppSystemBar
+        AppFooter,
+        AppSideBar,
+        AppToolbar,
+        AppSystemBar,
+    },
+    mounted(){
+
+    },
+    computed: {
+        // ...mapState({
+        //     ActiveAlarms: state => state.socketStore.ActiveAlarms
+        // }),
+        // ...mapGetters([
+        //     'systemFaulted'
+        // ])
     },
     methods: {
 
-    }
+    },
+    data: () => ({
+        faultText: "Hello"
+    })
 }
 
 </script>

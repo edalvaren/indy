@@ -18,7 +18,8 @@ export const socketStore = {
         },
         SOCKET_TAG(state, tags) {
             state.tags = tags.slice();
-        }
+        },
+        SOCKET_ALARM(state, )
     },
     actions: {
 

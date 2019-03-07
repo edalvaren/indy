@@ -8,14 +8,14 @@
             v-flex.d-flex(xs12 md4 sm12)
                 reset-button( :onClick="resetButtonClicked") Reset
         v-divider
-        v-layout.row.wrap(class="dashboard-sheet")
+        v-layout.row.wrap()
             v-flex.d-flex(xs12 md6)
-                motor-card(:cardTitle="Drum.cardTitle" :speedUnit="Drum.speedUnit" :image="Drum.image" speedValue="DrumSpeed.value"
+                motor-card(:cardTitle="Drum.cardTitle" :speedUnit="Drum.speedUnit" :image="Drum.image" :speedValue="drumSpeed.value"
                 :currentValue="drumCurrent.value")
             v-flex.d-flex(xs12 md6)
                 motor-card(:cardTitle="TakeUp.cardTitle" :speedUnit="TakeUp.speedUnit" :image="TakeUp.image" :speedValue="tuSpeed.value"
                 :currentValue="tuCurrent.value")
-        v-layout.row.wrap
+        v-layout.row.wrap()
             v-flex.d-flex(xs12 md6)
                 SetpointSlider(:unit="speedSetPoint.unit" :sliderLabel="speedSetPoint.label" :minVal="speedSetPoint.min" :maxVal="speedSetPoint.max"
                 :sliderVal="freqSp.value" :sliderValClone="speedSetPoint.inputValue" :onEnd="speedChanged")
@@ -56,7 +56,7 @@
         name: "dashboard",
         sockets: {
             connect: function () {
-                console.log('socket connected...yeah boy')
+                console.log(`socket connected...with socket ID ${this.$socket.id}`)
             },
             customEmit: function (data) {
                 console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
@@ -64,7 +64,7 @@
         },
         computed: {
           ...mapState({
-            allTags: state => state.socketStore.tags,
+            // allTags: state => state.socketStore.tags,
             connected: state=> state.socketStore.isConnected
           }),
             ...mapGetters({
@@ -73,7 +73,8 @@
                drumCurrent: 'DrumCurrent',
                tuCurrent: 'TuCurrent',
                freqSp: 'FreqSp',
-               torqueSp: 'TorqueSp'
+               torqueSp: 'TorqueSp',
+               commsFault: 'TuCommsFault'
             })
         },
         components: {

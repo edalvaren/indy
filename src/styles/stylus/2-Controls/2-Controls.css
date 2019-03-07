@@ -1,5 +1,5 @@
 .StartButton {
-  margin: 16px;
+  margin: 14px;
   padding: 24px 24px;
   text-align: center;
   cursor: pointer;
@@ -20,7 +20,7 @@
   transform: translate(1px);
 }
 .StopButton {
-  margin: 16px;
+  margin: 14px;
   padding: 24px 24px;
   text-align: center;
   cursor: pointer;
@@ -41,7 +41,7 @@
   transform: translate(1px);
 }
 .ResetButton {
-  margin: 16px;
+  margin: 14px;
   padding: 24px 24px;
   text-align: center;
   cursor: pointer;
@@ -64,42 +64,37 @@
 @media only screen and (max-width: 600px) {
   .StartButton {
     font-size: 22px;
-    max-width: 250px;
+    height: 100%;
   }
   .StopButton {
-    max-width: 250px;
     font-size: 22px;
   }
   .ResetButton {
-    max-width: 250px;
     font-size: 22px;
   }
 }
 @media only screen and (min-width: 786px) {
   .StartButton {
     font-size: 32px;
-    max-width: 300px;
+    height: 150px;
   }
   .StopButton {
-    max-width: 300px;
     font-size: 32px;
+    height: 150px;
   }
   .ResetButton {
-    max-width: 300px;
     font-size: 32px;
+    height: 150px;
   }
 }
 @media only screen and (min-width: 992px) {
   .StartButton {
-    max-width: 300px;
     font-size: $mpb-font-big;
   }
   .StopButton {
-    max-width: $mpb-max-widthLarge;
     font-size: $mpb-font-bigScreen;
   }
   .ResetButton {
-    max-width: $mpb-max-widthLarge;
     font-size: $mpb-font-bigScreen;
   }
 }

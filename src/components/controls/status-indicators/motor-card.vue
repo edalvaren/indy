@@ -84,10 +84,10 @@
     @media only screen and (max-width: 600px)
         .motor-display
             font-size 24px
-    @media only screen and (min-width: 600px)
+    @media only screen and (min-width: 786px)
         .motor-display
             font-size 32px
-    @media only screen and (min-width: 600px)
+    @media only screen and (min-width: 992px)
         .motor-display
             font-size 42px
 

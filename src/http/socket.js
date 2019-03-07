@@ -1,6 +1,9 @@
 import io from 'socket.io-client';
+import VueSocketIO from 'vue-socket.io';
 
 
-const socket = io('localhost:5000');
+const options = {path: '/my-app/'};
 
-export default socket;
+
+export const socketInstance = io('localhost:5000');
+

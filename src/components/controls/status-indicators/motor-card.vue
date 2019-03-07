@@ -2,12 +2,12 @@
     v-card(class="motor-display" color="#E8EAF6"  ripple="" hover="" flat="" tile="")
         v-layout
             v-flex(xs5)
-                v-img( :src="CardImage" height="175px" contain)
+                v-img( :src="image" height="175px" contain)
             v-flex(xs7)
-                v-card-title(primary-title="") {{CardTitle }}
+                v-card-title(primary-title="") {{cardTitle }}
                 v-card-text(class="motor-display")
-                    div {{SpeedValue + Unit }}
-                    div {{ CurrentValue | currency | current }}
+                    div {{speedValue + speedUnit }}
+                    div {{ currentValue | currency | current }}
         v-divider.light
         v-card-actions(class="pa-3")
             v-spacer
@@ -20,34 +20,36 @@
     export default {
         name: 'motorCard',
         props: {
-            PLCTag: {
-                type: Object,
-                required: false
-            },
-            CardTitle: {
+            cardTitle: {
                 type: String,
                 required: false
             },
-            Unit: {
+            speedUnit: {
                 type: String,
                 required: false
             },
-            SpeedValue: {
+            speedValue: {
                 type: String,
                 required: false
             },
-            CurrentValue: {
+            currentValue: {
                 required: false
             },
-            CardImage: {
+            image: {
               type: String,
               required: false
             },
 
         },
-        data: () => ({
+        data: function() {
+            return {
+                actualSpeed: this.speedValue,
+                actualCurrent: this.currentValue
+            }
+        },
+        computed: {
 
-        }),
+        },
         filters: {
             currency(amount) {
                 const amt = Number(amount);
@@ -81,12 +83,12 @@
 
     @media only screen and (max-width: 600px)
         .motor-display
-            font-size 18px
-    @media only screen and (min-width: 600px)
-        .motor-display
-            font-size 26px
+            font-size 24px
     @media only screen and (min-width: 600px)
         .motor-display
             font-size 32px
+    @media only screen and (min-width: 600px)
+        .motor-display
+            font-size 42px
 
 </style>

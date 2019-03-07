@@ -1,7 +1,6 @@
 import axios from 'axios';
 import router from './router';
-import socket from './socket';
-import socketStore from './socketStore';
+// import socket from './socket';
 
 export const http = {
     install(Vue, options){
@@ -9,4 +8,4 @@ export const http = {
     }
 };
 
-export {router, socket, socketStore};
+export {router};

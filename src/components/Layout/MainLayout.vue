@@ -14,7 +14,8 @@ import AppSystemBar from './AppSystemBar';
 import AppToolbar from './AppToolbar';
 import AppSideBar from './AppSidebar';
 import AppFooter from './AppFooter';
-
+// Needed for the store to work
+import {mapState, mapGetters} from 'vuex';
 export default {
     name: 'MainLayout',
     components: {
@@ -22,17 +23,6 @@ export default {
         AppSideBar,
         AppToolbar,
         AppSystemBar,
-    },
-    mounted(){
-
-    },
-    computed: {
-        // ...mapState({
-        //     ActiveAlarms: state => state.socketStore.ActiveAlarms
-        // }),
-        // ...mapGetters([
-        //     'systemFaulted'
-        // ])
     },
     methods: {
 
@@ -43,3 +33,11 @@ export default {
 }
 
 </script>
+
+<style lang="stylus" scoped>
+    .styled-alarm
+        max-height 20px
+        text-align center
+        padding 0
+        margin 0
+</style>

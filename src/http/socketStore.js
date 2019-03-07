@@ -1,4 +1,4 @@
-import store from '../store'
+import store from '@/store'
 import _ from 'lodash'
 import io from 'socket.io-client'
 store.registerModule('socketStore', {
@@ -6,20 +6,26 @@ store.registerModule('socketStore', {
 
     //State loaded when this component is first loaded
     state: {
-        Socket: io('localhost:5000'),
+        // Socket: io('localhost:5000'),
         Connected: false,
+        socketOnline: false,
         ConnectionId: '',
         ServerMessage: '',
         TagReceived: [],
-        tagVal: null,
-        pickedTag: null,
+        tagVal: [],
         AlarmActive: false,
         ActiveAlarmNumber: 0,
         ActiveAlarms: [],
     },
     mutations: {
         setSocketId(state, newVal) {
-          state.ConnectionId = newVal;
+            state.ConnectionId = newVal;
+        },
+        SOCKET_CONNECT(state) {
+          state.socketOnline = true;
+        },
+        SOCKET_DISCONNECT(state){
+          state.socketOnline = false;
         },
         sendMessage(state, msg){
             state.ServerMessage = msg;
@@ -28,13 +34,10 @@ store.registerModule('socketStore', {
             state.TagReceived = [newVal]
         },
         updateTagVal(state, newVal){
-            state.tagVal = state.TagReceived[0];
-        },
-        pickTagVal(state, newVal){
-            state.pickedTag = _.filter(newVal, x => x.name === "Spiral_Drum.VFD_Feedback_Frequency")
+            state.tagVal = state.TagReceived[0]
         },
         addAlarm(state, alarm) {
-                state.ActiveAlarms.push(alarm);
+            state.ActiveAlarms.push(alarm);
         }
 
     },
@@ -44,42 +47,33 @@ store.registerModule('socketStore', {
             if(newVal !== "NaN"){
                 commit('updateTagVal', newVal);
             }
-            dispatch('updateTagsByVal', state.TagReceived.name);
+            // dispatch('updateTagVal', state.TagReceived.name);
             // commit('updateTagVal', .name);
         },
-        updateTagsByVal({state, commit, rootState, dispatch}, newVal, valueToMatch){
-            commit('pickTagVal', state.tagVal);
-            // commit('updateTagVal', _.filter(newVal, x => x[0].name === "Spiral_Drum.VFD_Feedback_Frequency"));
+        updateTagVal({state, commit, rootState, dispatch}, newVal, valueToMatch) {
+            commit('updateTagVal', newVal)
         },
         updateAlarms({state, commit, rootState, dispatch}, newVal){
-            let lengthIsZero = (Object.keys(newVal).length === 0);
-            let constructorIsObject = (newVal.constructor === Object);
-            if (lengthIsZero && constructorIsObject || isEmpty(newVal)) {
-                console.log('empty object')
-            } else {
-                    commit('addAlarm', newVal)
+            commit('addAlarm', newVal);
 
-            }
-
+            // commit('updateTagVal', .name);
         },
     },
     getters: {
-        Socket: state => state.Socket,
-        ConnectionId: state => state.Socket.id,
-        Connected: state => {
-            return state.ConnectionId.length <= 0;
-
-        },
-        TagsReceived: state => state.TagReceived,
+        // Socket: state => state.Socket,
+        // ConnectionId: state => state.Socket.id,
+        // Connected: state => {
+        //     return state.ConnectionId.length <= 0;
+        //
+        // },
+        DrumSpeed: state => state.tagVal.find(o => o.name === "Spiral_Drum.VFD_Feedback_Frequency"),
+        DrumCurrent: state => state.tagVal.find(o => o.name === "Spiral_Drum.VFD_Feedback_Current"),
+        TuSpeed: state => state.tagVal.find(o => o.name === "Spiral_Takeup.VFD_Feedback_Frequency"),
+        TuCurrent: state => state.tagVal.find(o => o.name === "Spiral_Takeup.VFD_Feedback_Current"),
         TagVal: state => state.tagVal,
-        DrumSpeed: state => state.tagVal[2],
-        DrumCurrent: state => state.tagVal[3],
-        TakeUpSpeed: state => state.tagVal[12],
-        TakeUpCurrent: state => state.tagVal[13],
         FreqSp: state => state.tagVal[19],
         TorqueSp: state => state.tagVal[6],
         activeAlarms: state => state.ActiveAlarms,
-
     },
 });
 
@@ -87,7 +81,7 @@ function checkDuplicateInObject(propertyName, inputArray) {
     let seenDuplicate = false,
         testObject = {};
 
-    inputArray.map(function(item) {
+    inputArray.map(function (item) {
         let itemPropertyName = item[propertyName];
         if (itemPropertyName in testObject) {
             testObject[itemPropertyName].duplicate = true;
@@ -102,6 +96,7 @@ function checkDuplicateInObject(propertyName, inputArray) {
 
     return seenDuplicate;
 }
+
 
 
 /**

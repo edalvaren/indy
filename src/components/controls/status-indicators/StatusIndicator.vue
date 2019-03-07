@@ -1,14 +1,14 @@
 <template lang="pug">
         v-container(fluid grid-list-md="")
-            v-layout(row wrap="")
-                        v-card.mx-auto.status-indicator(color="#006064" dark="" max-width="500")
-                            v-card-title.display-1.align-center.justify-center {{'socketStore/DrumSpeed' | currency }}
-                            v-card-actions
-                                v-list-tile.grow
-                                    v-list-tile-content
-                                        v-list-tile-title.text-xs-left() {{'socketStore/DrumSpeed.name'}}
-                                    v-layout(align-center="" justify-end="")
-                                        v-icon.mr-1
+            <!--v-layout(row wrap="")-->
+                        <!--v-card.mx-auto.status-indicator(color="#006064" dark="" max-width="500")-->
+                            <!--v-card-title.display-1.align-center.justify-center {{'socketStore/DrumSpeed' | currency }}-->
+                            <!--v-card-actions-->
+                                <!--v-list-tile.grow-->
+                                    <!--v-list-tile-content-->
+                                        <!--v-list-tile-title.text-xs-left() {{'socketStore/DrumSpeed.name'}}-->
+                                    <!--v-layout(align-center="" justify-end="")-->
+                                        <!--v-icon.mr-1-->
 
 
 </template>
@@ -26,10 +26,6 @@ import {mapGetters} from 'vuex';
         },
         computed: {
             ...mapGetters([
-                 'socketStore/DrumSpeed',
-                'socketStore/DrumCurrent',
-                'socketStore/TakeUpSpeed',
-                "socketStore/TakeUpCurrent"
             ])
         },
         data: () => ({

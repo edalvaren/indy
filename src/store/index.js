@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import socket from '../http/socket';
-import createWebSocketPlugin from '../plugins/webSocketPlugin';
+import {socketStore} from './socketStore';
+
 Vue.use(Vuex);
 Vue.config.devtools = true;
 
@@ -9,7 +9,7 @@ const appComponentStore = {
   state: {
     drawer: null,
     message: '',
-    messages: []
+    messages: [],
   },
   mutations: {
     change(state){
@@ -49,18 +49,14 @@ const TimingFuncStore = {
 };
 
 
-// const vuexLocal = new VuexPersist({
-//   key: 'my-app',
-//   storage: localStorage
-// })
 
 
-const plugin = createWebSocketPlugin;
 
 export default new Vuex.Store({
   modules: {
     effectStore: appComponentStore,
     timeStore: TimingFuncStore,
+    socketStore: socketStore
   },
   // plugins: [vuexLocal.plugin]
 });

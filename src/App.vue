@@ -10,11 +10,17 @@ import MainLayout from './components/Layout/MainLayout';
 export default {
   components: {
       MainLayout
-  },
+     },
     data: () => ({
         TagValue: '',
         //TODO Add the Socket prop to the store so that I can have a connected/disconnected state
     }),
+    created() {
+
+    },
+    methods: {
+
+    }
 }
 </script>
 <style lang="stylus">

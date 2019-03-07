@@ -21,14 +21,14 @@
     export default {
         name: 'alarmMain',
         mounted(){
-            this.Socket.emit('READ_ALARMS');
-            this.Socket.on('ALARM', (data) => {
-                this.$store.dispatch('socketStore/updateAlarms', data);
-            });
+            // this.Socket.emit('READ_ALARMS');
+            // this.Socket.on('ALARM', (data) => {
+            //     this.$store.dispatch('socketStore/updateAlarms', data);
+            // });
         },
         computed: {
             ...mapState({
-                Socket: state => state.socketStore.Socket,
+                // Socket: state => state.socketStore.Socket,
                 ActiveAlarms: state => state.socketStore.ActiveAlarms
             }),
             ...mapGetters({
@@ -49,7 +49,8 @@
             }),
         methods: {
             clearAlarms(e){
-                this.Socket.emit('CLEAR_ALARMS');
+                this.$store.dispatch('socketStore/clearAlarms');
+                // this.Socket.emit('CLEAR_ALARMS');
             }
         }
         }

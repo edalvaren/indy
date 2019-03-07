@@ -25,7 +25,7 @@ $mpb-padding = 24px 24px
 $mpb-font-size = 40px
 $mpb-width = 240px
 $mpb-border-radius = 24px
-$mpb-margin = 16px
+$mpb-margin = 14px
 
 $mpb-font-small = 22px
 $mpb-font-md = 32px
@@ -103,13 +103,14 @@ $mpb-max-width-large = 600px
 @media only screen and (max-width: 600px)
   .StartButton
     font-size $mpb-font-small
-    max-width $mpb-max-width-small
+    height 100%
+    // max-width $mpb-max-width-small
   .StopButton
-    max-width $mpb-max-width-small
     font-size $mpb-font-small
+    // max-width $mpb-max-width-small
   .ResetButton
-    max-width $mpb-max-width-small
     font-size $mpb-font-small
+    // max-width $mpb-max-width-small
 
 
 
@@ -118,27 +119,32 @@ $mpb-max-width-large = 600px
 @media only screen and (min-width: 786px)
   .StartButton
     font-size $mpb-font-md
-    max-width $mpb-max-width-md
+    height 150px
+    // max-width $mpb-max-width-md
   .StopButton
-    max-width $mpb-max-width-md
+    // max-width $mpb-max-width-md
     font-size $mpb-font-md
+    height 150px
+
   .ResetButton
-    max-width $mpb-max-width-md
+    // max-width $mpb-max-width-md
     font-size $mpb-font-md
+    height 150px
 
 
 
-///* Medium devices (landscape tablets, 768px and up) */
+
+///* Large devices (landscape tablets, 768px and up) */
 //@media only screen and (min-width: 768px)
 //
 
 @media only screen and (min-width: 992px)
   .StartButton
-    max-width $mpb-max-width-large
+    // max-width $mpb-max-width-large
     font-size $mpb-font-big
   .StopButton
-    max-width $mpb-max-width-large
+    // max-width $mpb-max-width-large
     font-size $mpb-font-bigScreen
   .ResetButton
-    max-width $mpb-max-width-large
+    // max-width $mpb-max-width-large
     font-size $mpb-font-bigScreen

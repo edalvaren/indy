@@ -18,6 +18,7 @@
             v-layout.row.wrap
                 v-flex(xs9 md9)
                     v-slider(v-model="sliderValClone"
+                    thumb-label
                     always-dirty thumb-color="#B71C1C" color="#B71C1C"
                     class="styled-slider"
                     :min="minVal" :max="maxVal" append-icon="check_circle"
@@ -75,10 +76,10 @@ export default {
     }},
     computed: {
         color () {
-            if (this.sliderValClone < 60) return '#4CAF50'
-            if (this.sliderValClone < 50) return 'B71C1C'
-            if (this.sliderValClone < 40) return '8BC34A'
-            if (this.sliderValClone < 20) return 'error'
+            if (this.sliderValClone < 60) return '#4CAF50';
+            if (this.sliderValClone < 50) return 'B71C1C';
+            if (this.sliderValClone < 40) return '8BC34A';
+            if (this.sliderValClone < 20) return 'error';
         return 'red'
         },
         animationDuration () {

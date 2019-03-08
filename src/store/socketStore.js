@@ -41,6 +41,23 @@ export const socketStore = {
         FreqSp: state => state.tags.find(o => o.name === "HMI_Frequency_Setting"),
         TorqueSp: state => state.tags.find(o => o.name === "HMI.Tension_Control.Torque_Setpoint"),
 
-        TuCommsFault: state => state.alarms.find(o => o.AlarmNumber === 702),
+        SystemFaulted: state => {
+            // let activeAlarm = state.alarms.find(o => o.AlarmStatus === true);
+            // return (typeof activeAlarm === 'undefined');
+
+            for(var i = 0 ; i < state.alarms.length; i++) {
+                if (state.alarms[i].AlarmStatus === true) {
+                    return true;
+                }
+            }
+            return false;
+        },
+        UnclearedAlarm: state => {
+            for(var i = 0 ; i < state.alarms.length; i++) {
+                if (state.alarms[i].AlarmStatus === true) {
+                    return state.alarms[i];
+                }
+            }
+        }
     }
 };

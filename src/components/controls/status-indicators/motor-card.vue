@@ -1,5 +1,5 @@
 <template lang="pug">
-    v-card(class="motor-display" color="#E8EAF6"  ripple="" hover="" flat="" tile="")
+    v-card(class="motor-display" color="#ffffff"  ripple="" hover="" flat="" tile="")
         v-layout
             v-flex(xs5)
                 v-img( :src="image" height="175px" contain)
@@ -80,15 +80,16 @@
 </script>
 
 <style scoped lang="stylus">
+    $original-card-color = #E8EAF6
 
     @media only screen and (max-width: 600px)
         .motor-display
-            font-size 24px
+            font-size 20px
     @media only screen and (min-width: 786px)
         .motor-display
-            font-size 32px
+            font-size 26px
     @media only screen and (min-width: 992px)
         .motor-display
-            font-size 42px
+            font-size 36px
 
 </style>

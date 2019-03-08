@@ -1,12 +1,14 @@
 <template lang="pug">
     v-app
-        app-system-bar
-        app-toolbar
-        v-content
-            v-container(xs12 md12)
-                router-view
-        app-side-bar
-        app-footer
+        div(style="position: relative;")
+            app-system-bar
+            app-toolbar(:scrollTarget="scrollingZone")
+        div.scroll-y(id="scrolling-zone")
+            v-content
+                v-container(xs12 md12)
+                    router-view
+            app-side-bar
+            app-footer
 </template>
 
 <script>
@@ -28,16 +30,29 @@ export default {
 
     },
     data: () => ({
-        faultText: "Hello"
+        scrollingZone: "scrolling-zone",
     })
 }
 
 </script>
 
 <style lang="stylus" scoped>
+    #scrolling-zone
+        padding auto
     .styled-alarm
         max-height 20px
         text-align center
         padding 0
         margin 0
+
+    @media(max-height: 610px)
+        #scrolling-zone
+            max-height 522px
+    @media(max-height: 812px)
+        #scrolling-zone
+            max-height 732px
+    @media(max-height: 969px)
+        #scrolling-zone
+            max-height 889px
+
 </style>

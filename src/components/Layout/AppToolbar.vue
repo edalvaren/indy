@@ -1,5 +1,5 @@
     <template>
-            <v-toolbar color="primary" dark>
+            <v-toolbar color="primary" dark scroll-off-screen :scroll-target="scrollTarget">
                 <v-menu :nudge-width="100">
                         <v-toolbar-title slot="activator" class="headline text-uppercase">
                             <v-icon @click.stop="drawerChanged" dark>menu</v-icon>
@@ -26,6 +26,11 @@
     import Ilox from "../../assets/ilox.png"
     export default {
         name: "AppToolbar",
+        props: {
+          scrollTarget: {
+              required: false
+          }
+        },
         data: () => ({
             iloxLogo: Ilox,
             menuItems: [

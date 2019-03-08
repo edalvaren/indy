@@ -74,7 +74,6 @@
                tuCurrent: 'TuCurrent',
                freqSp: 'FreqSp',
                torqueSp: 'TorqueSp',
-               commsFault: 'TuCommsFault'
             })
         },
         components: {
@@ -144,7 +143,7 @@
 
 <style scoped lang="stylus">
     .MainButtons {
-        background-color: #E8EAF6;
+        background-color: #FFFFFF;
         margin-top: 1px;
         border: inset 8px 'accent';
         justify-content: center;

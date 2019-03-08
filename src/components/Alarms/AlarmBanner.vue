@@ -1,6 +1,7 @@
 <template lang="pug">
     div
         v-alert(v-model="AlarmValue" dismissible type="error" icon="warning")
+            slot
 </template>
 <script>
 export default {
@@ -9,12 +10,19 @@ export default {
         AlarmValue: {
             type: Boolean
         },
-        AlarmText: {
-            type: String
-        }
     },
-    data: () => ({
-        alert: true
-    })
+    data: function(){
+        return {
+        styleObject: {
+            fontSize: '30px',
+        }
+        }
+    }
 }
+
 </script>
+
+<style scoped lang="stylus">
+
+
+</style>

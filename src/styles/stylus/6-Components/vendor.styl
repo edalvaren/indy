@@ -1,10 +1,21 @@
 @import '~vuetify/src/stylus/main.styl'
 
+$original-color = #f3f392
+
+html
+  overflow scroll
+
+
+::-webkit-scrollbar {
+  width 0px
+  background transparent
+}
+
 .application.theme--light
-  background: #E8EAF6
+  background: #ffffff
 
 .status-indicator
-  color: #f3f392
+  background-color: #ffffff
   margin: 5pxpx
   padding: 5px
   max-width: 300px

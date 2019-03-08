@@ -63,27 +63,27 @@
 }
 @media only screen and (max-width: 600px) {
   .StartButton {
-    font-size: 22px;
+    font-size: 20px;
     height: 100%;
   }
   .StopButton {
-    font-size: 22px;
+    font-size: 20px;
   }
   .ResetButton {
-    font-size: 22px;
+    font-size: 20px;
   }
 }
 @media only screen and (min-width: 786px) {
   .StartButton {
-    font-size: 32px;
+    font-size: 28px;
     height: 150px;
   }
   .StopButton {
-    font-size: 32px;
+    font-size: 28px;
     height: 150px;
   }
   .ResetButton {
-    font-size: 32px;
+    font-size: 28px;
     height: 150px;
   }
 }

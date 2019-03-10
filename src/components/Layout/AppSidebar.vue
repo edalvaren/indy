@@ -36,7 +36,7 @@
                     { title: 'Dashboard', icon: 'dashboard', path: '/'},
                     { title: 'Alarms', icon: 'notification_important', path: '/alarms'},
                     { title: 'Trends', icon: 'trending_up', path: '/trends'},
-                    { title: 'Tools', icon: 'build', path: '/Settings'},
+                    { title: 'Tools', icon: 'build', path: '/settings'},
                 ],
                 mini: false,
 

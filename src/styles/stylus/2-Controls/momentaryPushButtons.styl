@@ -1,34 +1,35 @@
 // Start Button Colors
-$startButtonColor = #024C15
-$startButtonHover = #388E3C
-$startButtonActive = #00C853
+$startButtonColor = #2E7D32
+$startButtonHover = #00C853
+$startButtonActive = #66BB6A
 
 // Stop Button Colors
-$stopButtonColor = #7F0005
-$stopButtonHover = #D32F2F
+$stopButtonColor = #B71C1C
+$stopButtonHover = #EF5350
 $stopButtonActive = #D50000
 
 // Reset Button Colors
-$resetButtonColor = #311B92
-$resetButtonHover = #303F9F
-$resetButtonActive = #304FFE
+$resetButtonHover = #1A237E
+$resetButtonActive = #1976D2
+$resetButtonColor = #1565C0
 
 
 // Box Shadow Properties
-$box-shadow-size = 5px
-$box-shadow-transform-size = 1px
-$box-shadow-color = #90A4AE
+$box-shadow-size = 2px
+$box-shadow-transform-size = 5px
+$box-shadow-color = #424242
 $box-shadow-active = #37474F
 
 // General Properties
-$mpb-padding = 24px 24px
+$mpb-padding = 24px 24x
+$mpb-font-family = Roboto, sans-serif
 $mpb-font-size = 40px
 $mpb-width = 240px
-$mpb-border-radius = 24px
-$mpb-margin = 14px
+$mpb-border-radius = 16px
+$mpb-margin = 16px
 
-$mpb-font-small = 20px
-$mpb-font-md = 28px
+$mpb-font-small = 28px
+$mpb-font-md = 32px
 $mpb-font-large = 42px
 
 $mpb-max-width-small = 300px
@@ -41,6 +42,7 @@ $mpb-max-width-large = 550px
 .StartButton
     margin $mpb-margin
     padding: $mpb-padding
+    font-family: $mpb-font-family
     text-align: center
     cursor: pointer
     outline: none
@@ -61,6 +63,7 @@ $mpb-max-width-large = 550px
   .StopButton
     margin $mpb-margin
     padding: $mpb-padding
+    font-family: $mpb-font-family
     text-align: center
     cursor: pointer
     outline: none
@@ -82,6 +85,7 @@ $mpb-max-width-large = 550px
   .ResetButton
     margin: $mpb-margin
     padding: $mpb-padding
+    font-family: $mpb-font-family
     text-align: center
     cursor: pointer
     outline: none
@@ -96,19 +100,21 @@ $mpb-max-width-large = 550px
     &:active
       background-color $resetButtonActive
       box-shadow 0 $box-shadow-transform-size $box-shadow-active
-      transform translate(1px)
+      transform translate(3px)
 
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px)
   .StartButton
     font-size $mpb-font-small
-    height 100%
+    height 80px
     // max-width $mpb-max-width-small
   .StopButton
     font-size $mpb-font-small
-    // max-width $mpb-max-width-small
+    height 80px
+  // max-width $mpb-max-width-small
   .ResetButton
+    height 80px
     font-size $mpb-font-small
     // max-width $mpb-max-width-small
 

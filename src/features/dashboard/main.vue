@@ -1,31 +1,30 @@
 <template lang="pug">
-    v-container(fluid="" grid-xlist-xs="")
+    v-container(:style="containerStyle" fluid grid-xlist-xs="")
         v-layout.row.wrap(class="MainButtons" justify-space-around)
             v-flex.d-flex(xs12 md4 sm12)
-                start-button( :onClick="startButtonClicked") Start
+                start-button(:onClick="startButtonClicked") {{getStartText(spiralRunning)}}
             v-flex.d-flex(xs12 md4 sm12)
                 stop-button( :onClick="stopButtonClicked") Stop
             v-flex.d-flex(xs12 md4 sm12)
                 reset-button( :onClick="resetButtonClicked") Reset
-        v-divider
-        v-layout.row.wrap()
-            v-flex.d-flex(xs12 md6)
-                motor-card(:cardTitle="Drum.cardTitle" :speedUnit="Drum.speedUnit" :image="Drum.image" :speedValue="drumSpeed.value"
-                :currentValue="drumCurrent.value")
-            v-flex.d-flex(xs12 md6)
-                motor-card(:cardTitle="TakeUp.cardTitle" :speedUnit="TakeUp.speedUnit" :image="TakeUp.image" :speedValue="tuSpeed.value"
-                :currentValue="tuCurrent.value")
-        v-layout.row.wrap()
+        v-layout.row
+            home-dial
+        v-layout.row.wrap(class="slider-row dark")
             v-flex.d-flex(xs12 md6)
                 SetpointSlider(:unit="speedSetPoint.unit" :sliderLabel="speedSetPoint.label" :minVal="speedSetPoint.min" :maxVal="speedSetPoint.max"
-                :sliderVal="freqSp.value" :sliderValClone="speedSetPoint.inputValue" :onEnd="speedChanged")
+                :sliderVal="freqSp.value" :sliderValClone="speedSetPoint.inputValue" :onEnd="speedChanged" :cardStyle="cardStyle")
             v-flex.d-flex(xs12 md6)
                 SetpointSlider(:unit="torqueSetPoint.unit" :sliderLabel="torqueSetPoint.label" :minVal="torqueSetPoint.min" :maxVal="torqueSetPoint.max"
-                :sliderVal="torqueSp.value" :sliderValClone="torqueSetPoint.inputValue" :onEnd="torqueChanged")
-        <!--v-layout.row.wrap-->
-        <!--v-flex.d-flex(v-for="sp in setPoints" :key="setPoints.id" xs12 md6)-->
-        <!--SetpointSlider(:sliderVal="sp.inputValue" :onEnd="speedChanged" :onClickAppend="pressButton" :unit="sp.unit", :sliderLabel="sp.label" :minVal="sp.min" :maxVal="sp.max")-->
-        <!--&lt;!&ndash;SetpointSlider(:sliderVal="sp.inputValue" :onClickAppend="pressButton" :unit="sp.unit" :sliderLabel="sp.label" :minVal="sp.min" :maxVal="sp.max")&ndash;&gt;-->
+                :sliderVal="torqueSp.value" :sliderValClone="torqueSetPoint.inputValue" :onEnd="torqueChanged" :cardStyle="cardStyle")
+        v-layout.row.wrap(class="slider-row dark")
+            v-flex.d-flex(xs12 md6)
+                motor-card(:cardTitle="Drum.cardTitle" :speedUnit="Drum.speedUnit" :image="Drum.image" :speedValue="drumSpeed.value"
+                :currentValue="drumCurrent.value" :cardStyle="cardStyle")
+            v-flex.d-flex(xs12 md6)
+                motor-card(:cardTitle="TakeUp.cardTitle" :speedUnit="TakeUp.speedUnit" :image="TakeUp.image" :speedValue="tuSpeed.value"
+                :currentValue="tuCurrent.value" :cardStyle="cardStyle")
+
+
 </template>
 
 <script>
@@ -74,9 +73,11 @@
                tuCurrent: 'TuCurrent',
                freqSp: 'FreqSp',
                torqueSp: 'TorqueSp',
+               loadCell: 'LoadCell',
+               spiralRunning: 'SpiralRunning'
             })
         },
-        components: {
+        components:{
             StartButton,
             StopButton,
             ResetButton,
@@ -88,6 +89,14 @@
             return {
                 tags: [],
                 alertData: true,
+                containerStyle:{
+                    width: "100%",
+                    height: "100%"
+                },
+                cardStyle: {
+                  color: "#f4f4f4",
+                  backgroundColor: '#000000'
+                },
                 Drum:
                     {
                         cardTitle: "Drum",
@@ -110,7 +119,25 @@
         mounted: function () {
 
         },
+        filters: {
+            running(number){
+                switch(number){
+                    case '1.00': return "Running";
+                    case '0.00': return "Start";
+                    default: return "Oops";
+                }
+            }
+        },
         methods: {
+            getStartText(property){
+                if (property)
+                {
+                    return "Running"
+                }
+                else {
+                    return "Start"
+                }
+            },
             clickButton: function (data) {
                 // $socket is socket.io-client instance
                 this.$socket.emit('emit_method', data)
@@ -143,31 +170,60 @@
 
 <style scoped lang="stylus">
     .MainButtons {
-        background-color: #FFFFFF;
-        margin-top: 1px;
-        border: inset 8px 'accent';
+        border: inset 4px;
+        border-color: #1A237E;
         justify-content: center;
         align-content: center;
         align-items: center;
+        padding-bottom: 1.6%
     }
 
     .dashboard-sheet {
-        background-color: #E8EAF6;
+        background-color: #263238;
         margin-top: 2px;
         padding-top: 3em;
     }
 
+    .slider-row
+        border: inset 3px;
+        border-color: #1A237E;
+        padding 1.6%;
+
+    .blink_me {
+        animation: blinker 1.5s linear infinite;
+    }
+
+    @keyframes blinker {
+        50% {
+            opacity: 0.5;
+        }
+    }
     @media only screen and (max-width: 600px) {
         .dashboard-sheet {
             height: 256px;
             font-size: 14px;
+        }
+        .MainButtons {
+            font-size 32px
+
+        }
+        .styled-slider {
+            font-size: 26px;
         }
     }
 
     @media only screen and (min-width: 786px) {
         .dashboard-sheet {
             height: 343;
-            font-size: 16px;
+            font-size: 26px;
+        }
+        .MainButtons {
+            font-size 38px
+
+        }
+
+        .styled-slider {
+            font-size 38px
         }
     }
 
@@ -175,6 +231,12 @@
         .dashboard-sheet {
             height: 483;
             font-size: 28px;
+        }
+        .MainButtons {
+            font-size 72px
+        }
+        .styled-slider {
+            font-size: 26px;
         }
     }
 </style>

@@ -1,10 +1,9 @@
     <template>
-            <v-toolbar color="primary" dark scroll-off-screen :scroll-target="scrollTarget">
+            <v-toolbar class="primary styled-toolbar" dark scroll-off-screen :scroll-target="scrollTarget">
                 <v-menu :nudge-width="100">
                         <v-toolbar-title slot="activator" class="headline text-uppercase">
                             <v-icon @click.stop="drawerChanged" dark>menu</v-icon>
                         </v-toolbar-title>
-
                 </v-menu>
                 <v-toolbar-title>
                     <span class="full-text"> CONDITIONING CONTROL CENTER  </span>
@@ -50,6 +49,10 @@
 
 
 <style scoped lang="stylus">
+    .styled-toolbar
+        font-family Roboto, sans-serif
+        color $toolbar-color
+        backgroundColor $toolbar-color
     .toolbar-logo {
         width: 100%;
         color: 'secondary';

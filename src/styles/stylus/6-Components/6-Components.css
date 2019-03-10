@@ -1,0 +1,25 @@
+html {
+  overflow: scroll;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+.application.theme--light {
+  background: #fff;
+}
+.status-indicator {
+  background-color: #fff;
+  margin: 5pxpx;
+  padding: 5px;
+  max-width: 300px;
+  backgound: #f89532;
+}
+.app-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #805441;
+}

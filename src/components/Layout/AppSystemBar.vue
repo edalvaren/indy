@@ -1,11 +1,11 @@
 <template lang="pug">
-    div
-        v-system-bar(dark="")
+    div(class="alarm-banner-wrapper")
+        v-system-bar(status color="primary" lights-out dark)
             span {{isConnected ? 'Connected' : 'Disconnected'}}
             v-spacer
             span  {{now | moment("dddd, MMMM Do YYYY, h:mm:ss a")}}
-        AlarmBanner(:AlarmValue="systemFaulted" v-if="systemFaulted")
-            span(class="alarm-banner-text") {{unclearedAlarm.AlarmName}}
+        AlarmBanner( :AlarmValue="systemFaulted" v-if="systemFaulted")
+            span(class="alarm-row") {{unclearedAlarm.AlarmName}}
 </template>
 
 <script>
@@ -44,4 +44,19 @@
         font-weight bold
         justify-content space-evenly
         align-content center
+
+    .alarm-banner-wrapper
+        padding 0px
+        margin 0px
+
+    .alarm-row
+
+        margin 0px
+        font-size 22px
+        font-weight bold
+        -webkit-animation alarm-row 1s infinite; /* Safari 4+ */
+        -moz-animation    alarm-row 1s infinite; /* Fx 5+ */
+        -o-animation      alarm-row 1s infinite; /* Opera 12+ */
+        animation         alarm-row 1s infinite; /* IE 10+ */
+
 </style>

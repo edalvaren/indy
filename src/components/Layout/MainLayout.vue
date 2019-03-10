@@ -1,14 +1,13 @@
 <template lang="pug">
     v-app
+        app-system-bar
         div(style="position: relative;")
-            app-system-bar
             app-toolbar(:scrollTarget="scrollingZone")
         div.scroll-y(id="scrolling-zone")
-            v-content
-                v-container(xs12 md12)
-                    router-view
+            v-content.px-0
+                router-view
             app-side-bar
-            app-footer
+            app-footer(class="app-footer")
 </template>
 
 <script>
@@ -16,6 +15,7 @@ import AppSystemBar from './AppSystemBar';
 import AppToolbar from './AppToolbar';
 import AppSideBar from './AppSidebar';
 import AppFooter from './AppFooter';
+import {HomeDial} from '@/components/controls/speed-dials'
 // Needed for the store to work
 import {mapState, mapGetters} from 'vuex';
 export default {
@@ -25,6 +25,7 @@ export default {
         AppSideBar,
         AppToolbar,
         AppSystemBar,
+        HomeDial
     },
     methods: {
 

@@ -1,12 +1,16 @@
 <template lang="pug">
-    button(class="StartButton" @click="onClick")
-        slot Start
+    button(class="StartButton" :style="buttonStyle" @click="onClick")
+        slot
 </template>
 
 <script>
     export default  {
         name: 'mpb-start',
         props: {
+           buttonStyle: {
+               type: Object,
+               required: false
+           },
            onClick: {
                type: Function,
                required: true,

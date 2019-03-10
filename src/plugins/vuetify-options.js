@@ -4,14 +4,18 @@ import colors from "vuetify/es5/util/colors";
 const options = {
   iconfont: 'mdi',
   theme: {
-    primary: "#283593",
+    primary: "#2962FF",
     secondary: "#ff5722",
     accent: "#03a9f4",
-    error: "#f44336",
+    error: "#B71C1C",
     warning: "#ffeb3b",
     info: "#2196f3",
     success: "#4caf50"
 }
+
+
+  // primary: "#283593",
+
 
 // theme: {
   //   primary: "#094145",  // #E53935

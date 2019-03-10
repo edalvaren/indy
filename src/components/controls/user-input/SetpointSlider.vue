@@ -1,14 +1,14 @@
 <template lang="pug">
     v-container.fluid.grid-list-xs
-        v-card.mx-auto(max-width="900" color='primary' dark)
-            v-toolbar(card dense)
+        v-card(:style="cardStyle" dark)
+            v-toolbar(color="#304FFE" card dense)
                 v-toolbar-title
                     span.subheading {{sliderLabel}}
                 v-spacer
             v-card-text
                 v-layout.justify-space-between.mb-auto
                     v-flex.text-xs-left
-                        span.display-3.font-weight-light(v-text="sliderVal")
+                        span.display-2.font-weight-light(v-text="sliderVal")
                         span.subheading.font-weight-light.mr-1  {{unit}}
                         v-fade-transition
                             v-avatar.mb-1.v-avatar--setpoint-slider(v-if="isRunning" :color="color" :style="{animationDuration: animationDuration}" size="32")
@@ -19,7 +19,7 @@
                 v-flex(xs9 md9)
                     v-slider(v-model="sliderValClone"
                     thumb-label
-                    always-dirty thumb-color="#B71C1C" color="#B71C1C"
+                    always-dirty thumb-color="#304FFE" color="#304FFE"
                     class="styled-slider"
                     :min="minVal" :max="maxVal" append-icon="check_circle"
                     @end="onEnd(sliderValClone)")
@@ -32,6 +32,10 @@
 export default {
     name: 'setpoint-slider',
     props: {
+        cardStyle:{
+          type: Object,
+          required: false
+        },
         // value shown as card text
         sliderVal:{
           required: false,
@@ -116,6 +120,7 @@ export default {
 
   .styled-slider
     margin: auto
+
 
 
 </style>

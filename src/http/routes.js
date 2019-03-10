@@ -1,8 +1,7 @@
 import Main from '../features/dashboard/main'
 import About from '../views/About'
-import MainScreen from '../components/HMI/MainScreen'
-import AlarmWrapper from '../components/Alarms/AlarmWrapper'
 import AlarmsMain from '../features/alarms/main';
+import SettingsMain from '../features/spiral-settings/main';
 
 const routes = [
     {
@@ -14,6 +13,11 @@ const routes = [
         path: '/Alarms',
         name: 'alarms',
         component: AlarmsMain
+    },
+    {
+        path: '/settings',
+        name: 'settings',
+        component: SettingsMain
     },
     {
         path: '/about',

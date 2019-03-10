@@ -1,14 +1,14 @@
 <template lang="pug">
-    v-card(class="motor-display" color="#ffffff"  ripple="" hover="" flat="" tile="")
+    v-card(class="motor-display" :style="cardStyle" hover="" tile="")
         v-layout
             v-flex(xs5)
-                v-img( :src="image" height="175px" contain)
+                v-img( :src="image" height="150px" contain)
             v-flex(xs7)
-                v-card-title(primary-title="") {{cardTitle }}
-                v-card-text(class="motor-display")
-                    div {{speedValue + speedUnit }}
-                    div {{ currentValue | currency | current }}
-        v-divider.light
+                v-card-title.headline.font-weight-bold {{cardTitle }}
+                v-divider.light
+                v-card-text.text--white(class="motor-display")
+                    div Speed {{ speedValue + speedUnit }}
+                    div Current {{ currentValue | currency | current }}
         v-card-actions(class="pa-3")
             v-spacer
 
@@ -20,6 +20,10 @@
     export default {
         name: 'motorCard',
         props: {
+            cardStyle: {
+              type: Object,
+              required: false
+            },
             cardTitle: {
                 type: String,
                 required: false
@@ -82,14 +86,16 @@
 <style scoped lang="stylus">
     $original-card-color = #E8EAF6
 
+    .motor-display
+        font-family Roboto, sans-serif
     @media only screen and (max-width: 600px)
         .motor-display
-            font-size 20px
+            font-size 18px
     @media only screen and (min-width: 786px)
         .motor-display
-            font-size 26px
+            font-size 24px
     @media only screen and (min-width: 992px)
         .motor-display
-            font-size 36px
+            font-size 32px
 
 </style>

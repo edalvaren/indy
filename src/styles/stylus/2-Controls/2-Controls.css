@@ -1,89 +1,94 @@
 .StartButton {
-  margin: 14px;
-  padding: 24px 24px;
+  margin: 16px;
+  padding: 24px 24x;
+  font-family: Roboto, sans-serif;
   text-align: center;
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: #024c15;
+  background-color: #2e7d32;
   border: none;
-  border-radius: 24px;
-  box-shadow: 0 5px #90a4ae;
+  border-radius: 16px;
+  box-shadow: 0 2px #424242;
   text-transform: uppercase;
 }
 .StartButton:hover {
-  background-color: #388e3c;
+  background-color: #00c853;
 }
 .StartButton:active {
-  background-color: #00c853;
-  box-shadow: 0 1px #37474f;
+  background-color: #66bb6a;
+  box-shadow: 0 5px #37474f;
   transform: translate(1px);
 }
 .StopButton {
-  margin: 14px;
-  padding: 24px 24px;
+  margin: 16px;
+  padding: 24px 24x;
+  font-family: Roboto, sans-serif;
   text-align: center;
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: #7f0005;
+  background-color: #b71c1c;
   border: none;
-  border-radius: 24px;
-  box-shadow: 0 5px #90a4ae;
+  border-radius: 16px;
+  box-shadow: 0 2px #424242;
   text-transform: uppercase;
 }
 .StopButton:hover {
-  background-color: #d32f2f;
+  background-color: #ef5350;
 }
 .StopButton:active {
   background-color: #d50000;
-  box-shadow: 0 1px #37474f;
+  box-shadow: 0 5px #37474f;
   transform: translate(1px);
 }
 .ResetButton {
-  margin: 14px;
-  padding: 24px 24px;
+  margin: 16px;
+  padding: 24px 24x;
+  font-family: Roboto, sans-serif;
   text-align: center;
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: #311b92;
+  background-color: #1565c0;
   border: none;
-  border-radius: 24px;
-  box-shadow: 0 5px #90a4ae;
+  border-radius: 16px;
+  box-shadow: 0 2px #424242;
   text-transform: uppercase;
 }
 .ResetButton:hover {
-  background-color: #303f9f;
+  background-color: #1a237e;
 }
 .ResetButton:active {
-  background-color: #304ffe;
-  box-shadow: 0 1px #37474f;
-  transform: translate(1px);
+  background-color: #1976d2;
+  box-shadow: 0 5px #37474f;
+  transform: translate(3px);
 }
 @media only screen and (max-width: 600px) {
   .StartButton {
-    font-size: 20px;
-    height: 100%;
+    font-size: 28px;
+    height: 80px;
   }
   .StopButton {
-    font-size: 20px;
+    font-size: 28px;
+    height: 80px;
   }
   .ResetButton {
-    font-size: 20px;
+    height: 80px;
+    font-size: 28px;
   }
 }
 @media only screen and (min-width: 786px) {
   .StartButton {
-    font-size: 28px;
+    font-size: 32px;
     height: 150px;
   }
   .StopButton {
-    font-size: 28px;
+    font-size: 32px;
     height: 150px;
   }
   .ResetButton {
-    font-size: 28px;
+    font-size: 32px;
     height: 150px;
   }
 }

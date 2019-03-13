@@ -41,8 +41,17 @@ export const socketStore = {
         FreqSp: state => state.tags.find(o => o.name === "HMI_Frequency_Setting"),
         TorqueSp: state => state.tags.find(o => o.name === "HMI.Tension_Control.Torque_Setpoint"),
         LoadCell: state => state.tags.find(o => o.name === "Load_Cell_Percent"),
+        TakeUpStatus: state => state.tags.find(o => o.name === "Spiral_Takeup.Status"),
+        DrumStatus: state => state.tags.find(o => o.name === "Spiral_Drum.Status"),
 
-        SpiralRunning: state => (state.tags.find(o => o.name === "HMI_Spiral_Run").value !== "0.00"),
+        SpiralRunning: state => {
+            if (state.tags.find(o => o.AlarmStatus === true))
+            {
+                return true
+            }
+            return false
+            // state.tags.find(o => o.name === "HMI_Spiral_Run").value !== "0.00"
+        },
         SystemFaulted: state => {
             // let activeAlarm = state.alarms.find(o => o.AlarmStatus === true);
             // return (typeof activeAlarm === 'undefined');

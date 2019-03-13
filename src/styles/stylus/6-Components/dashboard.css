@@ -1,0 +1,8 @@
+.MainButtons {
+  border: inset 4px;
+  border-color: #232929;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding-bottom: 1.6%;
+}

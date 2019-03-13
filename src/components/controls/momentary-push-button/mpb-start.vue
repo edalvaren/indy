@@ -1,6 +1,6 @@
 <template lang="pug">
     button(class="StartButton" :style="buttonStyle" @click="onClick")
-        slot
+        slot Start
 </template>
 
 <script>

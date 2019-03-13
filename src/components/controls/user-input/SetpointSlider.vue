@@ -8,7 +8,7 @@
             v-card-text
                 v-layout.justify-space-between.mb-auto
                     v-flex.text-xs-left
-                        span.display-2.font-weight-light(v-text="sliderVal")
+                        span.display-1.font-weight-light(v-text="sliderVal")
                         span.subheading.font-weight-light.mr-1  {{unit}}
                         v-fade-transition
                             v-avatar.mb-1.v-avatar--setpoint-slider(v-if="isRunning" :color="color" :style="{animationDuration: animationDuration}" size="32")
@@ -76,7 +76,7 @@ export default {
         return{
         sliderValClone: this.sliderVal,     // cannot mutate Props directly because parent commponent will re render them.. instead we clone it...
         isInterval: null,
-        isRunning: false
+        isRunning: false,
     }},
     computed: {
         color () {
@@ -104,15 +104,14 @@ export default {
 </script>
 <style lang="stylus" scoped>
  @keyframes setpoint-example {
-    from {
-      transform: scale(.5);
-    }
+     from {
+         transform: scale(.5);
+     }
 
-    to {
-      transform: scale(1);
-    }
-  }
-
+     to {
+         transform: scale(1);
+     }
+ }
   .v-avatar--setpoint-slider
     animation-name: setpoint-example;
     animation-iteration-count: infinite;

@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
+import filters from './helpers/filters'
 import {router, http} from './http'
 import store from './store'
 import './registerServiceWorker'
 import 'material-design-icons-iconfont/dist/material-design-icons.css' // Ensure you are using css-loader
-import {sync} from 'vuex-router-sync';
+import {sync} from 'vuex-router-sync'
 
 /* Vuetify Options */
 import './styles/stylus/main.styl';
@@ -13,8 +14,8 @@ import VuetifyOptions from './plugins/vuetify-options';
 
 import { ValidationProvider } from 'vee-validate'; // Form Validation
 
-import io from 'socket.io-client';
-import VueSocketio from 'vue-socket.io-extended';
+import io from 'socket.io-client'
+import VueSocketio from 'vue-socket.io-extended'
 
 // Sync router to store, as `store.state.route`.
 sync(store, router);
@@ -26,6 +27,7 @@ Vue.use(Vuetify, VuetifyOptions);
 Vue.use(http);
 Vue.use(require('vue-moment'));
 Vue.use(VueSocketio, socketInstance, { store });
+Vue.use(filters);
 
 Vue.component('ValidationProvider', ValidationProvider);
 

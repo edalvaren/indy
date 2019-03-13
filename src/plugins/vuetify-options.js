@@ -4,7 +4,7 @@ import colors from "vuetify/es5/util/colors";
 const options = {
   iconfont: 'mdi',
   theme: {
-    primary: "#2962FF",
+    primary: "#1A237E",
     secondary: "#ff5722",
     accent: "#03a9f4",
     error: "#B71C1C",

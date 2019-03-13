@@ -7,7 +7,7 @@
             v-content.px-0
                 router-view
             app-side-bar
-            app-footer(class="app-footer")
+            <!--app-footer(class="app-footer")-->
 </template>
 
 <script>

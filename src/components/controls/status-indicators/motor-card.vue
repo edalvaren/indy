@@ -1,16 +1,25 @@
 <template lang="pug">
     v-card(class="motor-display" :style="cardStyle" hover="" tile="")
+        v-card-title
+            span.title.font-weight-bold {{cardTitle}}
         v-layout
             v-flex(xs5)
-                v-img( :src="image" height="150px" contain)
+                v-img(class="motor-image" :src="image" contain)
             v-flex(xs7)
-                v-card-title.headline.font-weight-bold {{cardTitle }}
-                v-divider.light
-                v-card-text.text--white(class="motor-display")
-                    div Speed {{ speedValue + speedUnit }}
-                    div Current {{ currentValue | currency | current }}
-        v-card-actions(class="pa-3")
-            v-spacer
+                v-card-text.text--white.font-weight-bold(class="motor-display")
+                    div.d-inline Speed...{{ speedValue + speedUnit }}
+                    div Current....{{ currentValue | currency | current }}
+                    div.d-inline-flex
+                        v-spacer
+                        slot.text-sm-right
+        v-divider
+        v-card-actions
+            v-list-tile.justify-end
+                v-list-tile-avatar.v-avatar--setpoint-slider(v-if="flash" :color="color" :style="{animationDuration: animationDuration}" size="28")
+            v-list-tile-content
+                v-list-tile-title.subheading Motor Status
+            v-layout.align-center.justify-end
+                span.subheading.mr-2 {{motorStatus | vfdStatus}}
 
 
 
@@ -21,8 +30,8 @@
         name: 'motorCard',
         props: {
             cardStyle: {
-              type: Object,
-              required: false
+                type: Object,
+                required: false
             },
             cardTitle: {
                 type: String,
@@ -40,37 +49,45 @@
                 required: false
             },
             image: {
-              type: String,
-              required: false
+                type: String,
+                required: false
             },
+            motorStatus: {
+                type: String,
+                required: false
+            }
 
         },
         data: function() {
             return {
                 actualSpeed: this.speedValue,
-                actualCurrent: this.currentValue
+                actualCurrent: this.currentValue,
+                animationDurationMultiplier: "30",
             }
         },
         computed: {
+            isRunning () {
+              return this.motorStatus === "2.00";
+            },
+            isFaulted () {
+                return (this.motorStatus === "3.00" || this.motorStatus === "4.00")
+            },
+            flash () {
+              return (this.isFaulted || this.isRunning);
+            },
+            color () {
+                if (this.motorStatus === "1.00") return '#FFEA00';
+                if (this.motorStatus === "2.00") return '#4CAF50';
+                if (this.motorStatus === "3.00") return '#B71C1C';
+                if (this.motorStatus === "4.00") return '#1A237E';
+                return 'red'
+            },
+            animationDuration(){
+                return `${this.animationDurationMultiplier / 50}s`
+            }
 
         },
         filters: {
-            currency(amount) {
-                const amt = Number(amount);
-                return amt && amt.toLocaleString(undefined, {maximumFractionDigits:2}) || '0'
-            },
-            current(number) {
-                return number + " A"
-            },
-            frequency(number) {
-                return number + " Hz"
-            },
-            speed(number) {
-                return number + " RPM"
-            },
-            percent(number) {
-                return number + " %"
-            },
             boolVal(number){
                 switch(number){
                     case '1': return true;
@@ -84,18 +101,40 @@
 </script>
 
 <style scoped lang="stylus">
+    .motor-image
+        height 175px
     $original-card-color = #E8EAF6
 
     .motor-display
         font-family Roboto, sans-serif
+        margin auto
     @media only screen and (max-width: 600px)
         .motor-display
-            font-size 18px
+            font-size 16px
+        .motor-image
+            height 100px
     @media only screen and (min-width: 786px)
         .motor-display
-            font-size 24px
+            font-size 18px
+        .motor-image
+            height 150px
     @media only screen and (min-width: 992px)
         .motor-display
             font-size 32px
+        .motor-image
+            height 175px
+    @keyframes setpoint-example {
+        from {
+            transform: scale(.5);
+        }
+
+        to {
+            transform: scale(1);
+        }
+    }
+    .v-avatar--setpoint-slider
+        animation-name: setpoint-example;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
 
 </style>
